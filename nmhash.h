@@ -580,11 +580,11 @@ NMHASH32_avalanche32(uint32_t const x)
 	union { uint32_t u32; uint16_t u16[2]; } vx;
 	vx.u32    = x;
 	vx.u32   ^= (vx.u32 >> 8) ^ (vx.u32 >> 21);
-	vx.u16[0] = (uint16_t)(vx.u16[0] * (uint16_t)m1);
-	vx.u16[1] = (uint16_t)(vx.u16[1] * (uint16_t)(m1 >> 16));
+	vx.u16[0] = (uint16_t)((unsigned)vx.u16[0] * (uint16_t)m1);
+	vx.u16[1] = (uint16_t)((unsigned)vx.u16[1] * (uint16_t)(m1 >> 16));
 	vx.u32   ^= (vx.u32 << 12) ^ (vx.u32 >> 7);
-	vx.u16[0] = (uint16_t)(vx.u16[0] * (uint16_t)m2);
-	vx.u16[1] = (uint16_t)(vx.u16[1] * (uint16_t)(m2 >> 16));
+	vx.u16[0] = (uint16_t)((unsigned)vx.u16[0] * (uint16_t)m2);
+	vx.u16[1] = (uint16_t)((unsigned)vx.u16[1] * (uint16_t)(m2 >> 16));
 	return vx.u32 ^ (vx.u32 >> 8) ^ (vx.u32 >> 21);
 }
 
